@@ -8,4 +8,5 @@
     <string name="text_view_consulte_seu_cep">Consulte seu CEP</string>
     <string name="edit_text_digite_seu_cep">Digite seu CEP</string>
     <string name="button_consultar">Consultar</string>
+    <string name="snakbar_invalid_cep">Cep Invalido</string>
 </resources>

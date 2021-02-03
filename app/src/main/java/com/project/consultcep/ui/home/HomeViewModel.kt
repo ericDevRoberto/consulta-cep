@@ -1,18 +1,21 @@
 package com.project.consultcep.ui.home
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import com.project.consultcep.utils.ViewModelCore
 
-class HomeViewModel : ViewModel() {
+class HomeViewModel :ViewModelCore<HomeAction>() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is home Fragment"
+    private var cep = String()
+
+    fun putCep(text: String){
+        cep = text
     }
-    val text: LiveData<String> = _text
 
-    fun getValue(){
+    fun getCepOnClick() {
+        if (cep.length == 9)
+            mutableLiveData.value = HomeAction.Success(cep = cep)
 
-        _text.postValue("Oloko bixo")
+        else
+            mutableLiveData.value = HomeAction.Fail
     }
+
 }
