@@ -71,7 +71,7 @@
             android:text="@string/button_consultar"
             android:onClick="@{() -> homeViewModel.getCepOnClick()}"
             android:textColor="@color/yellow"
-            android:textSize="20sp"
+            android:textSize="@dimen/textSize"
             app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
