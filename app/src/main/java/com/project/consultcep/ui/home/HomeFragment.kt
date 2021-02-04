@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.project.consultcep.R
 import com.project.consultcep.databinding.FragmentHomeBinding
@@ -55,7 +56,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun success(cep: String) {
-        view?.let { Snackbar.make(it, cep, Snackbar.LENGTH_SHORT).show() }
-        //NavHostFragment.findNavController(this).navigate(R.id.actionNavigationHomeToNavigationConsult)
+
+        this.findNavController().navigate(HomeFragmentDirections.actionNavigationHomeToNavigationConsult(cep = cep))
     }
 }

@@ -7,17 +7,24 @@
     <fragment
         android:id="@+id/navigationHome"
         android:name="com.project.consultcep.ui.home.HomeFragment"
-        android:label="@string/title_home"
         tools:layout="@layout/fragment_home" >
 
         <action
             android:id="@+id/actionNavigationHomeToNavigationConsult"
-            app:destination="@+id/navigationConsult"/>
+            app:destination="@+id/navigationConsult">
+        </action>
     </fragment>
 
     <fragment
         android:id="@+id/navigationConsult"
         android:name="com.project.consultcep.ui.consult.ConsultFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_consult" />
+        tools:layout="@layout/fragment_consult">
+
+        <argument
+            android:name="cep"
+            app:argType="string"/>
+    </fragment>
+
+
+
 </navigation>

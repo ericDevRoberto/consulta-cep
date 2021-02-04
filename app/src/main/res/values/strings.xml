@@ -14,7 +14,7 @@
     <string name="text_view_consult_cep">CEP</string>
     <string name="text_view_consult_estado">ESTADO</string>
     <string name="text_view_consult_cidade">CIDADE</string>
-    <string name="text_view_consult_cidade">CIDADE</string>
     <string name="text_view_consult_endereco">ENDEREÇO</string>
     <string name="button_consult_voltar">voltar</string>
+    <string name="text_view_consult_bairro">BAIRRO</string>
 </resources>
