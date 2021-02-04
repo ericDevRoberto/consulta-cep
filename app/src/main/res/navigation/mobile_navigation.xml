@@ -17,13 +17,7 @@
 
     <fragment
         android:id="@+id/navigationConsult"
-        android:name="com.project.consultcep.ui.dashboard.DashboardFragment"
+        android:name="com.project.consultcep.ui.consult.ConsultFragment"
         android:label="@string/title_dashboard"
         tools:layout="@layout/fragment_consult" />
-
-    <fragment
-        android:id="@+id/navigationHistory"
-        android:name="com.project.consultcep.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_history" />
 </navigation>
