@@ -20,6 +20,10 @@
         android:name="com.project.consultcep.ui.consult.ConsultFragment"
         tools:layout="@layout/fragment_consult">
 
+        <action
+            android:id="@+id/actionNavigationConsultToNavigationHome"
+            app:destination="@+id/navigationHome"/>
+
         <argument
             android:name="cep"
             app:argType="string"/>

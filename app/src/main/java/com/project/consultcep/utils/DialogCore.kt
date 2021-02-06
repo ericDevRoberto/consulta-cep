@@ -14,6 +14,7 @@ import androidx.annotation.StringRes
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import com.project.consultcep.R
 import com.project.consultcep.databinding.InflateAlertDialogBinding
 
@@ -27,20 +28,14 @@ class DialogCore(
     private val onClickBntNegative: (() -> Unit)? = null,
 ) : DialogFragment() {
 
-    private lateinit var binding: InflateAlertDialogBinding
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-
-        binding = DataBindingUtil.inflate(inflater, R.layout.inflate_alert_dialog, container, false)
-
-        return super.onCreateView(inflater, container, savedInstanceState)
-    }
-
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+
+        val binding: InflateAlertDialogBinding = DataBindingUtil.inflate(
+            LayoutInflater.from(context),
+            R.layout.inflate_alert_dialog,
+            null,
+            false
+        )
 
         val view = View.inflate(baseContext, R.layout.inflate_alert_dialog, null)
 
@@ -52,12 +47,14 @@ class DialogCore(
                 buttonPositive(dialogButtonPositive)
         }
 
+
         val builder = AlertDialog.Builder(view.context)
-        builder.setView(view)
+        builder.setView(binding.root)
 
         val dialogBuilder = builder.create()
         dialogBuilder.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-
+        dialogBuilder.setCanceledOnTouchOutside(false)
+        
         return dialogBuilder
     }
 
@@ -67,7 +64,6 @@ class DialogCore(
             positiveBntTitle?.let { setText(it) }
             setOnClickListener {
                 onClickBntPositive?.invoke()
-                dismissAllowingStateLoss()
             }
         }
     }
@@ -78,10 +74,12 @@ class DialogCore(
             negativeBntTitle?.let { setText(it) }
             setOnClickListener {
                 onClickBntNegative?.invoke()
-                dismissAllowingStateLoss()
+                //dismissAllowingStateLoss()
             }
         }
     }
+
+
 }
 
 fun Fragment.alertDialog(
@@ -98,7 +96,7 @@ fun Fragment.alertDialog(
         message = message,
         positiveBntTitle = positiveBntTitle,
         onClickBntPositive = onClickBntPositive,
-        negativeBntTitle=negativeBntTitle,
+        negativeBntTitle = negativeBntTitle,
         onClickBntNegative = onClickBntNegative
-    )
+    ).show(childFragmentManager, "Dialog")
 }

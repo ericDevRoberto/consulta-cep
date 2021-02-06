@@ -14,7 +14,6 @@ class ConsultViewModel(val cep: String) : ViewModelCore<ConsultAction>() {
         getCepApi()
     }
 
-
     fun getCepApi() {
         val endPoint = CepApiService.builder().create(CepApiDao::class.java)
 
@@ -26,9 +25,10 @@ class ConsultViewModel(val cep: String) : ViewModelCore<ConsultAction>() {
 
                 when (response.body()?.status) {
                     200 -> response.body()?.let { success(it) }
-                    500 -> ConsultAction.Fail("ERROR 500")
-                    400 -> ConsultAction.Fail("ERROR 400")
-                    else -> ConsultAction.Fail(response.body()?.status.toString())
+                    500 -> fail("ERROR 500")
+                    400 -> fail("ERROR 400")
+                    404 -> fail("ERROR 404")
+                    else -> fail(response.body()?.status.toString())
                 }
             }
 
@@ -41,6 +41,11 @@ class ConsultViewModel(val cep: String) : ViewModelCore<ConsultAction>() {
 
     fun success(cepProperty: CepProperty) {
         mutableLiveData.value = ConsultAction.Success(cepProperty)
+    }
+
+    fun fail (message : String){
+
+        mutableLiveData.value = ConsultAction.Fail(message)
     }
 
 
