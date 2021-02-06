@@ -8,13 +8,11 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Button
 import androidx.annotation.StringRes
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import com.project.consultcep.R
 import com.project.consultcep.databinding.InflateAlertDialogBinding
 
@@ -54,7 +52,7 @@ class DialogCore(
         val dialogBuilder = builder.create()
         dialogBuilder.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialogBuilder.setCanceledOnTouchOutside(false)
-        
+
         return dialogBuilder
     }
 
@@ -64,6 +62,7 @@ class DialogCore(
             positiveBntTitle?.let { setText(it) }
             setOnClickListener {
                 onClickBntPositive?.invoke()
+                dismissAllowingStateLoss()
             }
         }
     }
@@ -74,7 +73,7 @@ class DialogCore(
             negativeBntTitle?.let { setText(it) }
             setOnClickListener {
                 onClickBntNegative?.invoke()
-                //dismissAllowingStateLoss()
+                dismissAllowingStateLoss()
             }
         }
     }

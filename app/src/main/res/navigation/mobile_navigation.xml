@@ -28,7 +28,4 @@
             android:name="cep"
             app:argType="string"/>
     </fragment>
-
-
-
 </navigation>

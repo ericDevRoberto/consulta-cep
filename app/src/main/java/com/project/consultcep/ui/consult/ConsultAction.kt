@@ -1,9 +1,14 @@
 package com.project.consultcep.ui.consult
 
-import com.project.consultcep.network.CepProperty
+import com.project.consultcep.data.CepProperty
 
 sealed class ConsultAction {
-    data class Success(val result: CepProperty) : ConsultAction()
-    data class Fail(val messageFail: String) : ConsultAction()
+    data class ApiSuccess(val result: CepProperty) : ConsultAction()
+    object ApiFail: ConsultAction()
     object Loading : ConsultAction()
+    object ApiNotFound : ConsultAction()
+    object ApiInternetError : ConsultAction()
+    object ApiServerError : ConsultAction()
+    object ApiBadRequest : ConsultAction()
+    object BackToHome : ConsultAction()
 }

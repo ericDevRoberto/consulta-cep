@@ -1,4 +1,4 @@
-package com.project.consultcep.network
+package com.project.consultcep.data
 
 data class CepProperty(
     val status: Int,

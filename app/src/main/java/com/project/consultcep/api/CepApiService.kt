@@ -1,4 +1,4 @@
-package com.project.consultcep.network
+package com.project.consultcep.api
 
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory

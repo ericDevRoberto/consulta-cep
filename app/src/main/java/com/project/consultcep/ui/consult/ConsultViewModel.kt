@@ -1,8 +1,8 @@
 package com.project.consultcep.ui.consult
 
-import com.project.consultcep.network.CepApiDao
-import com.project.consultcep.network.CepApiService
-import com.project.consultcep.network.CepProperty
+import com.project.consultcep.data.CepApiRepository
+import com.project.consultcep.api.CepApiService
+import com.project.consultcep.data.CepProperty
 import com.project.consultcep.utils.ViewModelCore
 import retrofit2.Call
 import retrofit2.Callback
@@ -14,8 +14,8 @@ class ConsultViewModel(val cep: String) : ViewModelCore<ConsultAction>() {
         getCepApi()
     }
 
-    fun getCepApi() {
-        val endPoint = CepApiService.builder().create(CepApiDao::class.java)
+    private fun getCepApi() {
+        val endPoint = CepApiService.builder().create(CepApiRepository::class.java)
 
         mutableLiveData.value = ConsultAction.Loading
 
@@ -23,30 +23,23 @@ class ConsultViewModel(val cep: String) : ViewModelCore<ConsultAction>() {
 
             override fun onResponse(call: Call<CepProperty>, response: Response<CepProperty>) {
 
-                when (response.body()?.status) {
-                    200 -> response.body()?.let { success(it) }
-                    500 -> fail("ERROR 500")
-                    400 -> fail("ERROR 400")
-                    404 -> fail("ERROR 404")
-                    else -> fail(response.body()?.status.toString())
+                mutableLiveData.value = when (response.body()?.status) {
+                    200 -> response.body()?.let { ConsultAction.ApiSuccess(it) }
+                    500 -> ConsultAction.ApiServerError
+                    400 -> ConsultAction.ApiBadRequest
+                    404 -> ConsultAction.ApiNotFound
+                    else -> ConsultAction.ApiFail
                 }
             }
 
             override fun onFailure(call: Call<CepProperty>, t: Throwable) {
-                mutableLiveData.value = ConsultAction.Fail(t.message.toString())
+                mutableLiveData.value = ConsultAction.ApiInternetError
             }
-
         })
     }
 
-    fun success(cepProperty: CepProperty) {
-        mutableLiveData.value = ConsultAction.Success(cepProperty)
+    fun backToHome() {
+
+        mutableLiveData.value = ConsultAction.BackToHome
     }
-
-    fun fail (message : String){
-
-        mutableLiveData.value = ConsultAction.Fail(message)
-    }
-
-
 }

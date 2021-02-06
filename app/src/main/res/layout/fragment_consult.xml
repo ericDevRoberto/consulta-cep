@@ -34,10 +34,11 @@
         </androidx.appcompat.widget.Toolbar>
 
         <androidx.core.widget.NestedScrollView
-            android:id="@+id/scrowViewConsultInformation"
+            android:id="@+id/scroll_view_consult_information"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:visibility="gone"
+            tools:visibility="visible"
             android:layout_marginBottom="@dimen/dimen_horizontal_margin"
             app:layout_constraintTop_toBottomOf="@+id/consultToolbar"
             app:layout_constraintBottom_toBottomOf="parent">
@@ -170,6 +171,7 @@
                     android:layout_marginHorizontal="@dimen/dimen_horizontal_margin"
                     android:background="@drawable/background_button"
                     android:text="@string/button_consult_voltar"
+                    android:onClick="@{() -> consultViewModel.backToHome()}"
                     android:textColor="@color/yellow"
                     app:layout_constraintBottom_toBottomOf="parent"/>
 
@@ -180,6 +182,7 @@
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/imageViewLoadingImg"
             android:layout_width="match_parent"
+            tools:visibility="gone"
             android:layout_height="match_parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"

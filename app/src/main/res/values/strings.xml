@@ -1,13 +1,11 @@
 <resources>
     <string name="app_name">Consulte seu CEP</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
 
     <!--Home Fragment-->
     <string name="text_view_consulte_seu_cep">Consulte seu CEP</string>
     <string name="edit_text_digite_seu_cep">Digite seu CEP</string>
     <string name="button_consultar">Consultar</string>
-    <string name="snakbar_invalid_cep">Cep Invalido</string>
+    <string name="dialog_erro_cep">Cep invalido, ele tem de ter 8 digitos</string>
 
     <!--Consult Fragment-->
     <string name="text_view_toolbar_consulta">Consulta</string>
@@ -17,11 +15,15 @@
     <string name="text_view_consult_endereco">ENDEREÇO</string>
     <string name="button_consult_voltar">voltar</string>
     <string name="text_view_consult_bairro">BAIRRO</string>
-    <string name="dialog_fail_message_fail_api">API falhou</string>
+    <string name="dialog_message_fail_api">Ocorreu um erro, por favor tente mais tarde.</string>
+    <string name="dialog_message_fail_server">Ocorreu um erro no servidor, por favor tente mais tarde.</string>
+    <string name="dialog_message_bad_request">Ocorreu um erro, reporte ao administrador.</string>
+    <string name="dialog_message_not_found">CEP invalido, por favor tente novamente.</string>
+    <string name="dialog_message_fail_internet">Ocorreu um erro, por favor verifique sua internet.</string>
 
     <!--Dialog-->
     <string name="dialog_text_generic_negative_bnt">OK</string>
-    <string name="dialog_text_generic_title">Ocorreu um Erro</string>
+    <string name="dialog_text_generic_title">ERRO!</string>
     <string name="dialog_text_generic_message">Erro generico ocorrido!</string>
 
 </resources>

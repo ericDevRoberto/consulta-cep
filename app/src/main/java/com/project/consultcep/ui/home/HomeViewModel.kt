@@ -1,12 +1,6 @@
 package com.project.consultcep.ui.home
 
-import com.project.consultcep.network.CepApiDao
-import com.project.consultcep.network.CepApiService
-import com.project.consultcep.network.CepProperty
 import com.project.consultcep.utils.ViewModelCore
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class HomeViewModel : ViewModelCore<HomeAction>() {
 

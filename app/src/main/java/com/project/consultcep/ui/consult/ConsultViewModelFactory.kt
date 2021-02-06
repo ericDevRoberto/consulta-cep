@@ -13,6 +13,6 @@ class ConsultViewModelFactory(private val cep: String)
         if(modelClass.isAssignableFrom(ConsultViewModel::class.java)){
             return ConsultViewModel(cep) as T
         }
-        throw IllegalArgumentException("Unknown Viewl Model Class")
+        throw IllegalArgumentException("Unknown View Model Class")
     }
 }

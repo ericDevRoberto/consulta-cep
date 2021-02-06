@@ -8,15 +8,18 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.google.android.material.snackbar.Snackbar
 import com.project.consultcep.R
 import com.project.consultcep.databinding.FragmentHomeBinding
 import com.project.consultcep.utils.InputMask
 import com.project.consultcep.utils.MASK_CEP
+import com.project.consultcep.utils.alertDialog
+import com.project.consultcep.utils.hideKeyboard
 
 class HomeFragment : Fragment() {
 
     private lateinit var viewModel: HomeViewModel
+
+    private lateinit var binding: FragmentHomeBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -24,8 +27,7 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        val binding: FragmentHomeBinding =
-            DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
 
         viewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
 
@@ -44,19 +46,28 @@ class HomeFragment : Fragment() {
                 InputMask.mask(
                     MASK_CEP,
                     homeEditTextCep
-                ) { viewModel.putCep(homeEditTextCep.text.toString()) }
+                ) { putCepViewModel() }
             )
             return root
         }
     }
 
+    private fun putCepViewModel() {
+
+        viewModel.putCep(binding.homeEditTextCep.text.toString())
+        hideKeyboard()
+    }
+
     private fun fail() {
 
-        view?.let { Snackbar.make(it, R.string.snakbar_invalid_cep, Snackbar.LENGTH_SHORT).show() }
+        alertDialog(
+            message = R.string.dialog_erro_cep
+        )
     }
 
     private fun success(cep: String) {
 
-        this.findNavController().navigate(HomeFragmentDirections.actionNavigationHomeToNavigationConsult(cep = cep))
+        this.findNavController()
+            .navigate(HomeFragmentDirections.actionNavigationHomeToNavigationConsult(cep = cep))
     }
 }
