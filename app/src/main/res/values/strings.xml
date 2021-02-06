@@ -17,4 +17,11 @@
     <string name="text_view_consult_endereco">ENDEREÇO</string>
     <string name="button_consult_voltar">voltar</string>
     <string name="text_view_consult_bairro">BAIRRO</string>
+    <string name="dialog_fail_message_fail_api">API falhou</string>
+
+    <!--Dialog-->
+    <string name="dialog_text_generic_negative_bnt">OK</string>
+    <string name="dialog_text_generic_title">Ocorreu um Erro</string>
+    <string name="dialog_text_generic_message">Erro generico ocorrido!</string>
+
 </resources>

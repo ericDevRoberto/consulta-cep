@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.project.consultcep.R
 import com.project.consultcep.databinding.FragmentConsultBinding
 import com.project.consultcep.network.CepProperty
+import com.project.consultcep.utils.alertDialog
 
 class ConsultFragment : Fragment() {
 
@@ -57,5 +58,6 @@ class ConsultFragment : Fragment() {
 
     fun apiFail(message: String) {
         Toast.makeText(context, message, Toast.LENGTH_LONG).show()
+        alertDialog(message = R.string.dialog_fail_message_fail_api)
     }
 }
