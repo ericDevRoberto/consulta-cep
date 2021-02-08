@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/navigationHome"
-        android:name="com.project.consultcep.ui.home.HomeFragment"
+        android:name="com.project.consultcep.ui.homeFragment.HomeFragment"
         tools:layout="@layout/fragment_home" >
 
         <action
@@ -17,15 +17,30 @@
 
     <fragment
         android:id="@+id/navigationConsult"
-        android:name="com.project.consultcep.ui.consult.ConsultFragment"
+        android:name="com.project.consultcep.ui.consultFragment.ConsultFragment"
         tools:layout="@layout/fragment_consult">
 
         <action
             android:id="@+id/actionNavigationConsultToNavigationHome"
             app:destination="@+id/navigationHome"/>
 
+        <action
+            android:id="@+id/actionNavigationConsultToNavigationHistory"
+            app:destination="@id/navigationHistory"/>
+
         <argument
             android:name="cep"
             app:argType="string"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigationHistory"
+        android:name="com.project.consultcep.ui.historyFragment.HistoryFragment"
+        tools:layout="@layout/fragment_history">
+
+        <action
+            android:id="@+id/actionNavigationHistoryToNavigationHome"
+            app:destination="@id/navigationHome"/>
+
     </fragment>
 </navigation>

@@ -1,4 +1,4 @@
-package com.project.consultcep.ui.consult
+package com.project.consultcep.ui.consultFragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,7 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
 import com.project.consultcep.R
 import com.project.consultcep.databinding.FragmentConsultBinding
-import com.project.consultcep.data.CepProperty
+import com.project.consultcep.domain.model.CepApiProperty
 import com.project.consultcep.utils.alertDialog
 
 class ConsultFragment : Fragment() {
@@ -44,35 +44,38 @@ class ConsultFragment : Fragment() {
                 is ConsultAction.ApiServerError -> apiFail(R.string.dialog_message_fail_server)
                 is ConsultAction.ApiFail -> apiFail(R.string.dialog_message_fail_api)
                 is ConsultAction.BackToHome -> backToHome()
+                is ConsultAction.ToHistory -> toHistory()
             }
         })
 
-        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner){
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
             backToHome()
         }
 
-        with(binding){
+        with(binding) {
 
             consultViewModel = viewModel
+            this.lifecycleOwner = lifecycleOwner
 
             consultToolbar.setNavigationOnClickListener {
                 backToHome()
             }
+
             return root
         }
     }
 
-    private fun loading(){
+    private fun loading() {
         binding.imageViewLoadingImg.visibility = View.VISIBLE
     }
 
-    private fun apiWorked(cepProperty: CepProperty) {
+    private fun apiWorked(cepApiProperty: CepApiProperty) {
         with(binding) {
-            textViewConsultCep.text = cepProperty.code
-            textViewConsultState.text = cepProperty.state
-            textViewConsultCity.text = cepProperty.city
-            textViewConsultDistrict.text = cepProperty.district
-            textViewConsultAddress.text = cepProperty.address
+            textViewConsultCep.text = cepApiProperty.code
+            textViewConsultState.text = cepApiProperty.state
+            textViewConsultCity.text = cepApiProperty.city
+            textViewConsultDistrict.text = cepApiProperty.district
+            textViewConsultAddress.text = cepApiProperty.address
             imageViewLoadingImg.visibility = View.GONE
             scrollViewConsultInformation.visibility = View.VISIBLE
         }
@@ -87,5 +90,10 @@ class ConsultFragment : Fragment() {
     private fun backToHome() {
         NavHostFragment.findNavController(this)
             .navigate(ConsultFragmentDirections.actionNavigationConsultToNavigationHome())
+    }
+
+    private fun toHistory() {
+        NavHostFragment.findNavController(this)
+            .navigate(ConsultFragmentDirections.actionNavigationConsultToNavigationHistory())
     }
 }

@@ -26,4 +26,10 @@
     <string name="dialog_text_generic_title">ERRO!</string>
     <string name="dialog_text_generic_message">Erro generico ocorrido!</string>
 
+    <!--History Fragment-->
+    <string name="text_view_toolbar_historico">Historico</string>
+    <string name="bnt_history_limpar">Limpar</string>
+    <string name="bnt_history_voltar">Voltar</string>
+    <string name="button_consult_historico">Historico</string>
+
 </resources>

@@ -1,4 +1,4 @@
-package com.project.consultcep.ui.home
+package com.project.consultcep.ui.homeFragment
 
 import com.project.consultcep.utils.ViewModelCore
 

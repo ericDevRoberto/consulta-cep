@@ -1,4 +1,4 @@
-package com.project.consultcep.ui.consult
+package com.project.consultcep.ui.consultFragment
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

@@ -1,4 +1,4 @@
-package com.project.consultcep.ui.home
+package com.project.consultcep.ui.homeFragment
 
 import android.os.Bundle
 import android.view.LayoutInflater

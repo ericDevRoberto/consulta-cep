@@ -1,8 +1,8 @@
-package com.project.consultcep.ui.consult
+package com.project.consultcep.ui.consultFragment
 
 import com.project.consultcep.data.CepApiRepository
 import com.project.consultcep.api.CepApiService
-import com.project.consultcep.data.CepProperty
+import com.project.consultcep.domain.model.CepApiProperty
 import com.project.consultcep.utils.ViewModelCore
 import retrofit2.Call
 import retrofit2.Callback
@@ -19,9 +19,9 @@ class ConsultViewModel(val cep: String) : ViewModelCore<ConsultAction>() {
 
         mutableLiveData.value = ConsultAction.Loading
 
-        endPoint.getCep(cep).enqueue(object : Callback<CepProperty> {
+        endPoint.getCep(cep).enqueue(object : Callback<CepApiProperty> {
 
-            override fun onResponse(call: Call<CepProperty>, response: Response<CepProperty>) {
+            override fun onResponse(call: Call<CepApiProperty>, response: Response<CepApiProperty>) {
 
                 mutableLiveData.value = when (response.body()?.status) {
                     200 -> response.body()?.let { ConsultAction.ApiSuccess(it) }
@@ -32,7 +32,7 @@ class ConsultViewModel(val cep: String) : ViewModelCore<ConsultAction>() {
                 }
             }
 
-            override fun onFailure(call: Call<CepProperty>, t: Throwable) {
+            override fun onFailure(call: Call<CepApiProperty>, t: Throwable) {
                 mutableLiveData.value = ConsultAction.ApiInternetError
             }
         })
@@ -41,5 +41,9 @@ class ConsultViewModel(val cep: String) : ViewModelCore<ConsultAction>() {
     fun backToHome() {
 
         mutableLiveData.value = ConsultAction.BackToHome
+    }
+
+    fun toHistory(){
+        mutableLiveData.value = ConsultAction.ToHistory
     }
 }

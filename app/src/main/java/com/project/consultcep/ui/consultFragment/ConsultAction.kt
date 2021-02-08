@@ -1,9 +1,9 @@
-package com.project.consultcep.ui.consult
+package com.project.consultcep.ui.consultFragment
 
-import com.project.consultcep.data.CepProperty
+import com.project.consultcep.domain.model.CepApiProperty
 
 sealed class ConsultAction {
-    data class ApiSuccess(val result: CepProperty) : ConsultAction()
+    data class ApiSuccess(val result: CepApiProperty) : ConsultAction()
     object ApiFail: ConsultAction()
     object Loading : ConsultAction()
     object ApiNotFound : ConsultAction()
@@ -11,4 +11,5 @@ sealed class ConsultAction {
     object ApiServerError : ConsultAction()
     object ApiBadRequest : ConsultAction()
     object BackToHome : ConsultAction()
+    object ToHistory : ConsultAction()
 }

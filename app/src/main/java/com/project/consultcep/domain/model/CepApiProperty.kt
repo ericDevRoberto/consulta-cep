@@ -1,6 +1,6 @@
-package com.project.consultcep.data
+package com.project.consultcep.domain.model
 
-data class CepProperty(
+data class CepApiProperty(
     val status: Int,
     val code: String = String(),
     val state: String = String(),
