@@ -4,32 +4,41 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.project.consultcep.db.Dao.CepHistoryDao
 import com.project.consultcep.domain.model.CepHistoryTable
 
 @Database(entities = [CepHistoryTable::class], version = 1, exportSchema = false)
-abstract class DataBase:RoomDatabase() {
+abstract class DataBase : RoomDatabase() {
 
-    private var INSTANCE : DataBase? = null
+    abstract val cepHistoryDao: CepHistoryDao
 
-    fun getInstance(context: Context): DataBase {
-        synchronized(this){
+    companion object{
 
-            var instance = INSTANCE
+        @Volatile
+        private var INSTANCE: DataBase? = null
 
-            if(instance==null){
+        fun getInstance(context: Context): DataBase {
+            synchronized(this) {
 
-                instance = Room.databaseBuilder(
-                    context.applicationContext,
-                    DataBase::class.java,
-                    "cep_hitory_table"
-                )
-                    .fallbackToDestructiveMigration()
-                    .build()
+                var instance = INSTANCE
 
-                INSTANCE = instance
+                if (instance == null) {
+
+                    instance = Room.databaseBuilder(
+                        context.applicationContext,
+                        DataBase::class.java,
+                        "cep_hitory_table"
+                    )
+                        .fallbackToDestructiveMigration()
+                        .build()
+
+                    INSTANCE = instance
+                }
+
+                return instance
             }
-
-            return instance
         }
     }
+
+
 }

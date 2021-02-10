@@ -1,14 +1,21 @@
 package com.project.consultcep.ui.consultFragment
 
+import android.widget.Toast
+import androidx.lifecycle.viewModelScope
 import com.project.consultcep.data.CepApiRepository
 import com.project.consultcep.api.CepApiService
+import com.project.consultcep.db.Dao.CepHistoryDao
 import com.project.consultcep.domain.model.CepApiProperty
+import com.project.consultcep.domain.model.CepHistoryTable
 import com.project.consultcep.utils.ViewModelCore
+import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class ConsultViewModel(val cep: String) : ViewModelCore<ConsultAction>() {
+class ConsultViewModel(val cep: String, dataBase : CepHistoryDao) : ViewModelCore<ConsultAction>() {
+
+    val dataSource = dataBase
 
     init {
         getCepApi()
@@ -24,7 +31,7 @@ class ConsultViewModel(val cep: String) : ViewModelCore<ConsultAction>() {
             override fun onResponse(call: Call<CepApiProperty>, response: Response<CepApiProperty>) {
 
                 mutableLiveData.value = when (response.body()?.status) {
-                    200 -> response.body()?.let { ConsultAction.ApiSuccess(it) }
+                    200 -> response.body()?.let { success(it) }
                     500 -> ConsultAction.ApiServerError
                     400 -> ConsultAction.ApiBadRequest
                     404 -> ConsultAction.ApiNotFound
@@ -36,6 +43,24 @@ class ConsultViewModel(val cep: String) : ViewModelCore<ConsultAction>() {
                 mutableLiveData.value = ConsultAction.ApiInternetError
             }
         })
+    }
+
+    private fun success(cepApiProperty: CepApiProperty) : ConsultAction {
+
+        viewModelScope.launch {
+
+            val db = CepHistoryTable()
+            db.cepAddress = cepApiProperty.address
+            db.cepCity = cepApiProperty.city
+            db.cepCode = cepApiProperty.code
+            db.cepDistrict = cepApiProperty.district
+            db.cepState = cepApiProperty.state
+            dataSource.insert(db)
+
+            mutableLiveData.value = ConsultAction.ApiSuccess(cepApiProperty)
+        }
+
+        return ConsultAction.Loading
     }
 
     fun backToHome() {

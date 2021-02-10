@@ -13,6 +13,10 @@
             android:id="@+id/actionNavigationHomeToNavigationConsult"
             app:destination="@+id/navigationConsult">
         </action>
+
+        <action
+            android:id="@+id/actionNavigationHomeToNavigationHistory"
+            app:destination="@+id/navigationHistory"/>
     </fragment>
 
     <fragment

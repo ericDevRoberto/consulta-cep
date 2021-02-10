@@ -35,6 +35,7 @@ class HomeFragment : Fragment() {
             when (action) {
                 is HomeAction.Success -> success(action.cep)
                 is HomeAction.Fail -> fail()
+                is HomeAction.ToHistory -> toHistory()
             }
         })
 
@@ -69,5 +70,11 @@ class HomeFragment : Fragment() {
 
         this.findNavController()
             .navigate(HomeFragmentDirections.actionNavigationHomeToNavigationConsult(cep = cep))
+    }
+
+    private fun toHistory() {
+
+        this.findNavController()
+            .navigate(HomeFragmentDirections.actionNavigationHomeToNavigationHistory())
     }
 }

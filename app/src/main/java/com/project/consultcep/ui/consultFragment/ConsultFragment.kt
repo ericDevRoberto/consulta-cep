@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
 import com.project.consultcep.R
 import com.project.consultcep.databinding.FragmentConsultBinding
+import com.project.consultcep.db.DataBase
 import com.project.consultcep.domain.model.CepApiProperty
 import com.project.consultcep.utils.alertDialog
 
@@ -26,8 +27,12 @@ class ConsultFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
+        val application = requireNotNull(activity).application
+
+        val dataSource = DataBase.getInstance(application).cepHistoryDao
+
         val arguments = ConsultFragmentArgs.fromBundle(requireArguments())
-        val viewModelFactory = ConsultViewModelFactory(arguments.cep)
+        val viewModelFactory = ConsultViewModelFactory(arguments.cep, dataSource)
         viewModel =
             ViewModelProvider(this, viewModelFactory).get(ConsultViewModel::class.java)
 

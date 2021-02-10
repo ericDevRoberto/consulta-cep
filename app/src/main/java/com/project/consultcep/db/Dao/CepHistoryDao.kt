@@ -13,7 +13,7 @@ interface CepHistoryDao {
     suspend fun insert(cepHistoryTable: CepHistoryTable)
 
     @Query("SELECT * FROM cep_hitory_table ORDER BY cepHistoryId")
-    suspend fun getAllHistory(): LiveData<List<CepHistoryTable>>
+    fun getAllHistory(): LiveData<List<CepHistoryTable>>
 
     @Query("SELECT * FROM cep_hitory_table WHERE cepHistoryId = :key")
     suspend fun getHistory(key: Long): CepHistoryTable
