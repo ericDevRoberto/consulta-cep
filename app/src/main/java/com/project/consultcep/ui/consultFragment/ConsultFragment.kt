@@ -8,17 +8,17 @@ import androidx.activity.addCallback
 import androidx.annotation.StringRes
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
 import com.project.consultcep.R
 import com.project.consultcep.databinding.FragmentConsultBinding
-import com.project.consultcep.db.DataBase
 import com.project.consultcep.domain.model.CepApiProperty
 import com.project.consultcep.utils.alertDialog
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ConsultFragment : Fragment() {
 
-    private lateinit var viewModel: ConsultViewModel
+    private val viewModel: ConsultViewModel by viewModel()
+
     private lateinit var binding: FragmentConsultBinding
 
     override fun onCreateView(
@@ -26,15 +26,6 @@ class ConsultFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
-        val application = requireNotNull(activity).application
-
-        val dataSource = DataBase.getInstance(application).cepHistoryDao
-
-        val arguments = ConsultFragmentArgs.fromBundle(requireArguments())
-        val viewModelFactory = ConsultViewModelFactory(arguments.cep, dataSource)
-        viewModel =
-            ViewModelProvider(this, viewModelFactory).get(ConsultViewModel::class.java)
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_consult, container, false)
 

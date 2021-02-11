@@ -1,10 +1,19 @@
 package com.project.consultcep.ui.homeFragment
 
+import androidx.lifecycle.viewModelScope
+import com.project.consultcep.db.Dao.CepChoiseDao
+import com.project.consultcep.db.Dao.CepHistoryDao
+import com.project.consultcep.domain.model.CepChoiseTable
 import com.project.consultcep.utils.ViewModelCore
+import kotlinx.coroutines.launch
 
-class HomeViewModel : ViewModelCore<HomeAction>() {
+class HomeViewModel(
+    dataBase: CepChoiseDao
+) : ViewModelCore<HomeAction>() {
 
     private var cep = String()
+
+    private val data = dataBase
 
     fun putCep(text: String) {
         cep = text
@@ -18,7 +27,11 @@ class HomeViewModel : ViewModelCore<HomeAction>() {
     }
 
     private fun getCepApi(cep: String) {
-
+        viewModelScope.launch {
+            val db = CepChoiseTable()
+            db.cepChoose = cep
+            data.insert(db)
+        }
         mutableLiveData.value = HomeAction.Success(cep)
     }
 

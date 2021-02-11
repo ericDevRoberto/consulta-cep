@@ -32,9 +32,6 @@
             android:id="@+id/actionNavigationConsultToNavigationHistory"
             app:destination="@id/navigationHistory"/>
 
-        <argument
-            android:name="cep"
-            app:argType="string"/>
     </fragment>
 
     <fragment

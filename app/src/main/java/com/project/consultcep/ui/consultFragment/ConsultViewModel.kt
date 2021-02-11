@@ -1,11 +1,12 @@
 package com.project.consultcep.ui.consultFragment
 
-import android.widget.Toast
 import androidx.lifecycle.viewModelScope
-import com.project.consultcep.data.CepApiRepository
 import com.project.consultcep.api.CepApiService
+import com.project.consultcep.data.CepApiRepository
+import com.project.consultcep.db.Dao.CepChoiseDao
 import com.project.consultcep.db.Dao.CepHistoryDao
 import com.project.consultcep.domain.model.CepApiProperty
+import com.project.consultcep.domain.model.CepChoiseTable
 import com.project.consultcep.domain.model.CepHistoryTable
 import com.project.consultcep.utils.ViewModelCore
 import kotlinx.coroutines.launch
@@ -13,20 +14,39 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class ConsultViewModel(val cep: String, dataBase : CepHistoryDao) : ViewModelCore<ConsultAction>() {
+class ConsultViewModel(
+    val dataBase : CepHistoryDao,
+    val dbCep : CepChoiseDao
+    ) : ViewModelCore<ConsultAction>() {
 
-    val dataSource = dataBase
+    private val dataSource = dataBase
 
-    init {
-        getCepApi()
+    override fun onCleared() {
+        super.onCleared()
+
+        viewModelScope.launch {
+            dataSource.clearData()
+        }
+    }
+   init{
+       lastCep()
+   }
+
+    private fun lastCep() {
+
+        viewModelScope.launch {
+            val lastCep = dbCep.getLastCepRegistered()
+
+            getCepApi(lastCep)
+        }
     }
 
-    private fun getCepApi() {
+    private fun getCepApi(cep: CepChoiseTable) {
         val endPoint = CepApiService.builder().create(CepApiRepository::class.java)
 
         mutableLiveData.value = ConsultAction.Loading
 
-        endPoint.getCep(cep).enqueue(object : Callback<CepApiProperty> {
+        endPoint.getCep(cep.cepChoose).enqueue(object : Callback<CepApiProperty> {
 
             override fun onResponse(call: Call<CepApiProperty>, response: Response<CepApiProperty>) {
 
