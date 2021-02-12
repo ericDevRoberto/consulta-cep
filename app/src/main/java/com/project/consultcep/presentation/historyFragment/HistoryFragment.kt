@@ -1,16 +1,18 @@
-package com.project.consultcep.ui.historyFragment
+package com.project.consultcep.presentation.historyFragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.project.consultcep.R
 import com.project.consultcep.databinding.FragmentHistoryBinding
-import com.project.consultcep.ui.historyFragment.adapter.HistoryAdapter
+import com.project.consultcep.presentation.historyFragment.adapter.HistoryAdapter
+import com.project.consultcep.presentation.historyFragment.adapter.HistoryRecycleViewClickListener
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HistoryFragment : Fragment() {
@@ -40,7 +42,9 @@ class HistoryFragment : Fragment() {
 
         //RecycleView
 
-        val adapter = HistoryAdapter()
+        val adapter = HistoryAdapter(HistoryRecycleViewClickListener { cepHistoryId ->
+            Toast.makeText(context, "$cepHistoryId", Toast.LENGTH_LONG).show()
+        })
         binding.recycleViewHistory.adapter = adapter
 
         val manager = GridLayoutManager(activity, 1, GridLayoutManager.VERTICAL,false)

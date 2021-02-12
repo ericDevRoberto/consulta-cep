@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/navigationHome"
-        android:name="com.project.consultcep.ui.homeFragment.HomeFragment"
+        android:name="com.project.consultcep.presentation.homeFragment.HomeFragment"
         tools:layout="@layout/fragment_home" >
 
         <action
@@ -21,7 +21,7 @@
 
     <fragment
         android:id="@+id/navigationConsult"
-        android:name="com.project.consultcep.ui.consultFragment.ConsultFragment"
+        android:name="com.project.consultcep.presentation.consultFragment.ConsultFragment"
         tools:layout="@layout/fragment_consult">
 
         <action
@@ -36,12 +36,23 @@
 
     <fragment
         android:id="@+id/navigationHistory"
-        android:name="com.project.consultcep.ui.historyFragment.HistoryFragment"
+        android:name="com.project.consultcep.presentation.historyFragment.HistoryFragment"
         tools:layout="@layout/fragment_history">
 
         <action
             android:id="@+id/actionNavigationHistoryToNavigationHome"
             app:destination="@id/navigationHome"/>
+
+        <action
+            android:id="@+id/actionNavigationHistoryToNavigationSelectedCep"
+            app:destination="@+id/navigationSelectedCep"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigationSelectedCep"
+        android:name="com.project.consultcep.presentation.selectedCepFragment.SelectedCepFragment"
+        tools:layout="@layout/fragment_selected_cep">
 
     </fragment>
 </navigation>

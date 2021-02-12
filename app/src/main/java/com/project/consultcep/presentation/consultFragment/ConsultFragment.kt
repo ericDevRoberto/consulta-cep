@@ -1,4 +1,4 @@
-package com.project.consultcep.ui.consultFragment
+package com.project.consultcep.presentation.consultFragment
 
 import android.os.Bundle
 import android.view.LayoutInflater

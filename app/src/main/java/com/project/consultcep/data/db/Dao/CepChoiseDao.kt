@@ -1,4 +1,4 @@
-package com.project.consultcep.db.Dao
+package com.project.consultcep.data.db.Dao
 
 import androidx.room.Dao
 import androidx.room.Insert

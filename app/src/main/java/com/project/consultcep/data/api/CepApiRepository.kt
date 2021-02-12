@@ -1,4 +1,4 @@
-package com.project.consultcep.data
+package com.project.consultcep.data.api
 
 import com.project.consultcep.domain.model.CepApiProperty
 import retrofit2.Call

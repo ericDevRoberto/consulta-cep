@@ -1,4 +1,4 @@
-package com.project.consultcep.ui.consultFragment
+package com.project.consultcep.presentation.consultFragment
 
 import com.project.consultcep.domain.model.CepApiProperty
 

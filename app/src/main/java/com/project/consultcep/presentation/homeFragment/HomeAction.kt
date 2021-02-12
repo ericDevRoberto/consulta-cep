@@ -1,4 +1,4 @@
-package com.project.consultcep.ui.homeFragment
+package com.project.consultcep.presentation.homeFragment
 
 sealed class HomeAction {
     data class Success(val cep: String) : HomeAction()

@@ -1,8 +1,7 @@
-package com.project.consultcep.ui.homeFragment
+package com.project.consultcep.presentation.homeFragment
 
 import androidx.lifecycle.viewModelScope
-import com.project.consultcep.db.Dao.CepChoiseDao
-import com.project.consultcep.db.Dao.CepHistoryDao
+import com.project.consultcep.data.db.Dao.CepChoiseDao
 import com.project.consultcep.domain.model.CepChoiseTable
 import com.project.consultcep.utils.ViewModelCore
 import kotlinx.coroutines.launch

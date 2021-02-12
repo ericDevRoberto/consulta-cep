@@ -1,4 +1,4 @@
-package com.project.consultcep.ui
+package com.project.consultcep.presentation
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

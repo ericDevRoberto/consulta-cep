@@ -1,7 +1,7 @@
-package com.project.consultcep.ui.historyFragment
+package com.project.consultcep.presentation.historyFragment
 
 import androidx.lifecycle.viewModelScope
-import com.project.consultcep.db.Dao.CepHistoryDao
+import com.project.consultcep.data.db.Dao.CepHistoryDao
 import com.project.consultcep.utils.ViewModelCore
 import kotlinx.coroutines.launch
 

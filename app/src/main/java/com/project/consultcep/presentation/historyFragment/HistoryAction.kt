@@ -1,4 +1,4 @@
-package com.project.consultcep.ui.historyFragment
+package com.project.consultcep.presentation.historyFragment
 
 sealed class HistoryAction {
     object Success : HistoryAction()

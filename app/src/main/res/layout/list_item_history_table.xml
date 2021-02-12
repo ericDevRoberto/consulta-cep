@@ -7,6 +7,10 @@
     <data>
 
         <variable
+            name="clickListener"
+            type="com.project.consultcep.presentation.historyFragment.adapter.HistoryRecycleViewClickListener" />
+
+        <variable
             name="cep"
             type="com.project.consultcep.domain.model.CepHistoryTable" />
     </data>
@@ -14,7 +18,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:onClick="@{() -> clickListener.onclick(cep)}">
 
 
         <androidx.appcompat.widget.AppCompatTextView

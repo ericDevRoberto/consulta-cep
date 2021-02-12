@@ -1,4 +1,4 @@
-package com.project.consultcep.db.Dao
+package com.project.consultcep.data.db.Dao
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao

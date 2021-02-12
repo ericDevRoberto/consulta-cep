@@ -1,8 +1,8 @@
-package com.project.consultcep.ui.historyFragment
+package com.project.consultcep.presentation.historyFragment
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.project.consultcep.db.Dao.CepHistoryDao
+import com.project.consultcep.data.db.Dao.CepHistoryDao
 
 @Suppress("UNCHECKED_CAST")
 class HistoryViewModelFactory(private val dataSource: CepHistoryDao)

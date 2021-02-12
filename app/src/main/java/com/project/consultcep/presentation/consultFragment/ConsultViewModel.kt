@@ -1,10 +1,10 @@
-package com.project.consultcep.ui.consultFragment
+package com.project.consultcep.presentation.consultFragment
 
 import androidx.lifecycle.viewModelScope
-import com.project.consultcep.api.CepApiService
-import com.project.consultcep.data.CepApiRepository
-import com.project.consultcep.db.Dao.CepChoiseDao
-import com.project.consultcep.db.Dao.CepHistoryDao
+import com.project.consultcep.data.api.CepApiService
+import com.project.consultcep.data.api.CepApiRepository
+import com.project.consultcep.data.db.Dao.CepChoiseDao
+import com.project.consultcep.data.db.Dao.CepHistoryDao
 import com.project.consultcep.domain.model.CepApiProperty
 import com.project.consultcep.domain.model.CepChoiseTable
 import com.project.consultcep.domain.model.CepHistoryTable
