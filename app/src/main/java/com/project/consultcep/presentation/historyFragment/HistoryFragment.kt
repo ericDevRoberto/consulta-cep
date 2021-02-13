@@ -39,6 +39,7 @@ class HistoryFragment : Fragment() {
         })
 
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
+
             backToHome()
         }
 
@@ -70,15 +71,15 @@ class HistoryFragment : Fragment() {
 
             return root
         }
-
-
     }
 
     private fun goToSelected() {
+
         findNavController().navigate(HistoryFragmentDirections.actionNavigationHistoryToNavigationSelectedCep())
     }
 
     private fun backToHome() {
+
         NavHostFragment.findNavController(this)
             .navigate(HistoryFragmentDirections.actionNavigationHistoryToNavigationHome())
     }

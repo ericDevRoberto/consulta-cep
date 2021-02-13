@@ -27,6 +27,7 @@ class SelectedCepViewModel(
     }
 
     private fun getCep(){
+
         viewModelScope.launch {
 
             val cep : String = bdChoice.getLastCepRegistered().cepChoose
@@ -38,6 +39,7 @@ class SelectedCepViewModel(
     }
 
     fun toBack(){
+
         mutableLiveData.value = SelectedCepAction.ToBack
     }
 }

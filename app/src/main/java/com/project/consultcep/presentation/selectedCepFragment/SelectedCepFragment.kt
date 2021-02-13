@@ -69,6 +69,7 @@ class SelectedCepFragment : Fragment() {
     }
 
     private fun backToHistory(){
+
         findNavController().navigate(SelectedCepFragmentDirections.actionNavigationSelectedToNavigationHistory())
     }
 }

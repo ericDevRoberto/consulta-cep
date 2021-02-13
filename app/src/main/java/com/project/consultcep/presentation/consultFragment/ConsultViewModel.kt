@@ -28,20 +28,23 @@ class ConsultViewModel(
             dataSource.clearData()
         }
     }
+
    init{
+
        lastCep()
    }
 
     private fun lastCep() {
 
         viewModelScope.launch {
-            val lastCep = dbCep.getLastCepRegistered()
 
+            val lastCep = dbCep.getLastCepRegistered()
             getCepApi(lastCep)
         }
     }
 
     private fun getCepApi(cep: CepChoiseTable) {
+
         val endPoint = CepApiService.builder().create(CepApiRepository::class.java)
 
         mutableLiveData.value = ConsultAction.Loading
@@ -89,6 +92,7 @@ class ConsultViewModel(
     }
 
     fun toHistory(){
+
         mutableLiveData.value = ConsultAction.ToHistory
     }
 }

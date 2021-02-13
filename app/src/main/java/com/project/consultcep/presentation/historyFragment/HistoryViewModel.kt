@@ -15,16 +15,19 @@ class HistoryViewModel(
     val allHistoryCep = dataBase.getAllHistory()
 
     fun toBack(){
+
         mutableLiveData.value = HistoryAction.ToBack
     }
 
     fun toCleanData(){
+
         viewModelScope.launch {
             dataBase.clearData()
         }
     }
 
     fun getCepToSelected(cep : String){
+
         viewModelScope.launch {
             val db = CepChoiseTable()
             db.cepChoose = cep
@@ -33,6 +36,4 @@ class HistoryViewModel(
             mutableLiveData.value = HistoryAction.Success
         }
     }
-
-
 }

@@ -15,10 +15,12 @@ class HomeViewModel(
     private val data = dataBase
 
     fun putCep(text: String) {
+
         cep = text
     }
 
     fun getCepOnClick() {
+
         if (cep.length == 9)
             getCepApi(cep = cep)
         else
@@ -38,6 +40,7 @@ class HomeViewModel(
     }
 
     fun toHistory(){
+
         mutableLiveData.value = HomeAction.ToHistory
     }
 }

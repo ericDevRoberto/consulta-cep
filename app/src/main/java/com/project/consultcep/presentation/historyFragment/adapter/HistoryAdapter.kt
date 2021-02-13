@@ -14,6 +14,7 @@ class HistoryAdapter(private val clickListener: HistoryRecycleViewClickListener)
         val layoutInflater = LayoutInflater.from(parent.context)
         val binding =
             ListItemHistoryTableBinding.inflate(layoutInflater, parent, false)
+
         return HistoryViewHolder(binding)
     }
 
@@ -21,16 +22,17 @@ class HistoryAdapter(private val clickListener: HistoryRecycleViewClickListener)
 
         holder.bind(getItem(position), clickListener)
     }
-
 }
 
 class HistoryDiffCallBack : DiffUtil.ItemCallback<CepHistoryTable>() {
+
     override fun areItemsTheSame(oldItem: CepHistoryTable, newItem: CepHistoryTable): Boolean {
+
         return oldItem == newItem
     }
 
     override fun areContentsTheSame(oldItem: CepHistoryTable, newItem: CepHistoryTable): Boolean {
+
         return oldItem.cepHistoryId == newItem.cepHistoryId
     }
-
 }

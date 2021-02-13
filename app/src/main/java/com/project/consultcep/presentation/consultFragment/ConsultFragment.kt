@@ -45,6 +45,7 @@ class ConsultFragment : Fragment() {
         })
 
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
+
             backToHome()
         }
 
@@ -62,10 +63,12 @@ class ConsultFragment : Fragment() {
     }
 
     private fun loading() {
+
         binding.imageViewLoadingImg.visibility = View.VISIBLE
     }
 
     private fun apiWorked(cepApiProperty: CepApiProperty) {
+
         with(binding) {
             textViewConsultCep.text = cepApiProperty.code
             textViewConsultState.text = cepApiProperty.state
@@ -84,11 +87,13 @@ class ConsultFragment : Fragment() {
     }
 
     private fun backToHome() {
+
         NavHostFragment.findNavController(this)
             .navigate(ConsultFragmentDirections.actionNavigationConsultToNavigationHome())
     }
 
     private fun toHistory() {
+
         NavHostFragment.findNavController(this)
             .navigate(ConsultFragmentDirections.actionNavigationConsultToNavigationHistory())
     }

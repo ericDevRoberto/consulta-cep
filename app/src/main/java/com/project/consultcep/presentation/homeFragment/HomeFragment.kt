@@ -39,6 +39,7 @@ class HomeFragment : Fragment() {
         })
 
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner){
+
             requireActivity().finish()
         }
 
@@ -52,6 +53,7 @@ class HomeFragment : Fragment() {
                     homeEditTextCep
                 ) { putCepViewModel() }
             )
+
             return root
         }
     }

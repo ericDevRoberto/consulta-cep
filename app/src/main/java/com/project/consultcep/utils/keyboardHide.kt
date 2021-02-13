@@ -13,5 +13,6 @@ fun Context.hideKeyboard (view: View){
 }
 
 fun Fragment.hideKeyboard(){
+
     view?.let { activity?.hideKeyboard(it) }
 }
