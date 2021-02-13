@@ -54,5 +54,8 @@
         android:name="com.project.consultcep.presentation.selectedCepFragment.SelectedCepFragment"
         tools:layout="@layout/fragment_selected_cep">
 
+        <action
+            android:id="@+id/actionNavigationSelectedToNavigationHistory"
+            app:destination="@+id/navigationHistory"/>
     </fragment>
 </navigation>

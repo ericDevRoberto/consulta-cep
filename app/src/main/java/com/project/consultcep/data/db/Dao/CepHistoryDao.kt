@@ -18,6 +18,9 @@ interface CepHistoryDao {
     @Query("SELECT * FROM cep_hitory_table WHERE cepHistoryId = :key")
     suspend fun getHistory(key: Long): CepHistoryTable
 
+    @Query("SELECT * FROM cep_hitory_table WHERE cepCode = :key")
+    suspend fun getSelectedHistory(key: String): CepHistoryTable
+
     @Query ("DELETE FROM cep_hitory_table")
     suspend fun clearData()
 }

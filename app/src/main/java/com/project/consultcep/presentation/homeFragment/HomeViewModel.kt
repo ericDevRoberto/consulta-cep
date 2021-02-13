@@ -26,12 +26,15 @@ class HomeViewModel(
     }
 
     private fun getCepApi(cep: String) {
+
         viewModelScope.launch {
+
             val db = CepChoiseTable()
             db.cepChoose = cep
             data.insert(db)
+
+            mutableLiveData.value = HomeAction.Success
         }
-        mutableLiveData.value = HomeAction.Success(cep)
     }
 
     fun toHistory(){

@@ -33,4 +33,12 @@
     <string name="button_consult_historico">Historico</string>
     <string name="button_historico">Historico</string>
 
+    <!--Selected Cep Fragment-->
+    <string name="text_view_toolbar_historico_selecionado">Historico Selecionado</string>
+    <string name="text_view_selected_cep">CEP</string>
+    <string name="text_view_selected_estado">ESTADO</string>
+    <string name="text_view_selected_cidade">CIDADE</string>
+    <string name="text_view_selected_bairro">BAIRRO</string>
+    <string name="text_view_selected_endereco">ENDEREÇO</string>
+
 </resources>

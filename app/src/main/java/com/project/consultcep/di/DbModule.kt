@@ -4,7 +4,7 @@ import androidx.room.Room
 import com.project.consultcep.data.db.DataBase
 import org.koin.dsl.module
 
-private const val NAME_DATA_BASE = "cep_hitory_table"
+private const val NAME_DATA_BASE = "cep_history_table"
 
 val DbModule = module {
 
